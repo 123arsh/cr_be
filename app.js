@@ -22,8 +22,9 @@ app.use(cors({
         'http://localhost:5173',
         'http://127.0.0.1:5173',
         'http://localhost:5174',
-        'http://127.0.0.1:5174'
-    ], // Allow both localhost variations for user and admin
+        'http://127.0.0.1:5174',
+        process.env.FRONTEND_URL // Add your frontend URL from environment variable
+    ].filter(Boolean), // Remove undefined values
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
