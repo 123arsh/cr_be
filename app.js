@@ -18,8 +18,8 @@ app.use(cors({
         'http://127.0.0.1:5173',
         'http://localhost:5174',
         'http://127.0.0.1:5174',
-        process.env.FRONTEND_URL, // This will now include your Netlify domain
-        'https://*.onrender.com'
+        'https://carentalweb.netlify.app', // Your Netlify frontend URL
+        process.env.FRONTEND_URL // Environment variable for flexibility
     ].filter(Boolean),
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -29,23 +29,6 @@ app.use(cors({
 }));
 /*middlewares*/
 app.use(express.urlencoded({ extended: false }));
-
-// Configure CORS with specific options
-// app.use(cors({
-//     origin: [
-//         'http://localhost:5173',
-//         'http://127.0.0.1:5173',
-//         'http://localhost:5174',
-//         'http://127.0.0.1:5174',
-//         process.env.FRONTEND_URL, // Add your frontend URL from environment variable
-//         'https://*.onrender.com' // Allow Render domains
-//     ].filter(Boolean), // Remove undefined values
-//     credentials: true,
-//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-//     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-//     exposedHeaders: ['Set-Cookie'],
-//     maxAge: 600
-// }));
 
 app.use(express.json());
 app.use(cookieParser());
