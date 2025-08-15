@@ -12,6 +12,8 @@ const cookieParser = require('cookie-parser');
 const adminRoute = require('./routes/admin');
 
 const cors = require('cors');
+// Trust Render's proxy so secure cookies work with X-Forwarded-Proto
+app.set('trust proxy', 1);
 app.use(cors({
     origin: [
         'http://localhost:5173',
