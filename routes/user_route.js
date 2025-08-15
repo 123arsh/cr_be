@@ -35,9 +35,10 @@ router.post('/login', async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'None',
+            partitioned: true,
             path: '/',
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-        });
+            maxAge: 7 * 24 * 60 * 60 * 1000
+          });
 
         // Find user data (excluding sensitive fields)
         const userData = await user.findOne({ email }).select('-password -salt');
